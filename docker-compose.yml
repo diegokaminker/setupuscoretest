@@ -1,0 +1,47 @@
+# HAPI FHIR JPA Server with PostgreSQL
+# US Core 8.0.1 + LOINC, SNOMED, UCUM terminology
+# Ready for AWS deployment
+#
+# Terminology mode:
+#   remote (default): Uses tx.fhir.org - no local LOINC/SNOMED needed
+#   local: Uses locally loaded terminology - run load-terminology.sh first
+# Set via: SPRING_CONFIG_ADDITIONAL_LOCATION in .env
+
+services:
+  hapi-fhir:
+    build: .
+    container_name: hapi-fhir-uscore
+    restart: on-failure
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: hapi
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      # ADD our config (keeps HAPI defaults, overrides datasource/IG)
+      SPRING_CONFIG_ADDITIONAL_LOCATION: ${SPRING_CONFIG_ADDITIONAL_LOCATION:-file:///config/application.yaml}
+    ports:
+      - "${FHIR_PORT:-8023}:8080"  # host:container (HAPI listens on 8080)
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: hapi-fhir-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: hapi
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d hapi"]
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

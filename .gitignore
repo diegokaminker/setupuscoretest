@@ -1,0 +1,5 @@
+# Terminology data (large files, manual download)
+terminology-data/
+
+# Config backups
+config/*.bak.*
