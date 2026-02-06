@@ -13,6 +13,7 @@ A Docker-based FHIR HAPI server with PostgreSQL backend, preloaded with [US Core
   - hl7.terminology.r4 (UCUM, HL7 vocabularies) as transitive dependency
 - **AWS-ready** – Docker Compose setup suitable for EC2, ECS, or EKS
 - **Port 8023** – Configurable via `FHIR_PORT` (default 8023)
+- **IPS (International Patient Summary)** – `Patient/$summary` operation enabled; IPS IG 1.1.0 loaded
 - **Terminology modes** – Remote (tx.fhir.org) or local (no external dependency)
 - **MCP (Model Context Protocol)** – Optional [FHIR MCP Server](https://github.com/wso2/fhir-mcp-server) for AI/LLM integration (VS Code, Claude Desktop, MCP Inspector)
 
@@ -41,6 +42,7 @@ docker compose logs -f hapi-fhir
 
 - **FHIR Base URL**: http://localhost:8023/fhir
 - **CapabilityStatement**: http://localhost:8023/fhir/metadata
+- **IPS $summary**: `POST /fhir/Patient/{id}/$summary` (or `GET /fhir/Patient/{id}/$summary`)
 - **Swagger UI**: http://localhost:8023/fhir/swagger-ui/
 - **HAPI Tester**: http://localhost:8023/
 - **MCP Server** (if enabled): http://localhost:8000/mcp
@@ -107,7 +109,9 @@ Edit `config/application.yaml` (remote tx) or `config/application-local-terminol
    docker compose up -d
    ```
 
-6. Optional: put a load balancer (ALB) or reverse proxy (nginx) in front; use HTTPS.
+6. **Nginx + Let's Encrypt (HTTPS):** See `nginx/README.md` for reverse proxy config. Proxies:
+   - `https://your-domain/server/fhir` → HAPI
+   - `https://your-domain/mcp` → MCP server
 
 ### Option 2: ECS (Fargate)
 
@@ -241,11 +245,15 @@ curl -X POST 'http://localhost:8023/fhir/CodeSystem/$validate-code' \
 ├── config/
 │   ├── application.yaml                    # HAPI/Spring config (default: remote tx)
 │   └── application-local-terminology.yaml  # Config for local-only terminology
+├── nginx/
+│   ├── ahipdemo.conf                       # Nginx + Let's Encrypt for FHIR + MCP
+│   └── README.md                           # Setup instructions
 ├── scripts/
 │   └── load-terminology.sh                 # Load LOINC/SNOMED locally (no tx.fhir.org)
 ├── terminology-data/                       # Place Loinc_*.zip and SnomedCT_*.zip here
 ├── docker-compose.yml
 ├── Dockerfile
+├── Dockerfile.mcp                          # MCP server build (amd64)
 ├── requirements.md
 └── README.md
 ```

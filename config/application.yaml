@@ -56,6 +56,14 @@ hapi:
         version: 8.0.1
         reloadExisting: false
         installMode: STORE_AND_INSTALL
+      ips:
+        name: hl7.fhir.uv.ips
+        version: 1.1.0
+        reloadExisting: false
+        installMode: STORE_AND_INSTALL
+
+    # International Patient Summary - enables Patient/$summary operation
+    ips_enabled: true
 
     # -------------------------------------------------------------------------
     # Terminology: LOINC, SNOMED, UCUM, HL7
@@ -88,9 +96,11 @@ hapi:
     maximum_expansion_size: 5000
 
     # Validation
+    # responses_enabled: false - tx.fhir.org rejects IANA MIME codes (xml, json, etc.)
+    # in CapabilityStatement.format, causing metadata to return OperationOutcome instead
     validation:
       requests_enabled: true
-      responses_enabled: true
+      responses_enabled: false
 
     # CORS for web clients
     cors:
