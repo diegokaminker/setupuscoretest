@@ -99,7 +99,7 @@ hapi:
     # responses_enabled: false - tx.fhir.org rejects IANA MIME codes (xml, json, etc.)
     # in CapabilityStatement.format, causing metadata to return OperationOutcome instead
     validation:
-      requests_enabled: true
+      requests_enabled: false
       responses_enabled: false
 
     # CORS for web clients
