@@ -50,6 +50,7 @@ services:
 
   fhir-mcp-server:
     image: wso2/fhir-mcp-server:latest
+    platform: linux/amd64
     container_name: fhir-mcp-server
     restart: unless-stopped
     environment:
