@@ -49,8 +49,10 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   fhir-mcp-server:
-    image: wso2/fhir-mcp-server:latest
-    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    image: fhir-mcp-server:local
     container_name: fhir-mcp-server
     restart: unless-stopped
     environment:
