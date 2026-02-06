@@ -163,13 +163,13 @@ Add to your MCP config (e.g. `.cursor/mcp.json` or VS Code MCP settings):
 }
 ```
 
-For remote deployment (e.g. ahipdemo.net), use your server URL:
+For remote deployment (e.g. hl7int-server.com), use your server URL:
 
 ```json
 {
   "mcpServers": {
     "fhir-uscore": {
-      "url": "https://ahipdemo.net/mcp/mcp"
+      "url": "https://hl7int-server.com/mcp/mcp"
     }
   }
 }
@@ -246,7 +246,7 @@ curl -X POST 'http://localhost:8023/fhir/CodeSystem/$validate-code' \
 │   ├── application.yaml                    # HAPI/Spring config (default: remote tx)
 │   └── application-local-terminology.yaml  # Config for local-only terminology
 ├── nginx/
-│   ├── ahipdemo.conf                       # Nginx + Let's Encrypt for FHIR + MCP
+│   ├── hl7int-server.conf                       # Nginx + Let's Encrypt for FHIR + MCP
 │   └── README.md                           # Setup instructions
 ├── scripts/
 │   └── load-terminology.sh                 # Load LOINC/SNOMED locally (no tx.fhir.org)

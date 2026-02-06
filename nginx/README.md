@@ -29,20 +29,20 @@ sudo mkdir -p /var/www/certbot
 
 # Option A: Use certbot standalone (stop nginx first)
 sudo systemctl stop nginx
-sudo certbot certonly --standalone -d ahipdemo.net --non-interactive --agree-tos -m your@email.com
+sudo certbot certonly --standalone -d hl7int-server.com --non-interactive --agree-tos -m your@email.com
 sudo systemctl start nginx
 ```
 
 Or if nginx is already running with HTTP on port 80:
 
 ```bash
-sudo certbot certonly --webroot -w /var/www/certbot -d ahipdemo.net --non-interactive --agree-tos -m your@email.com
+sudo certbot certonly --webroot -w /var/www/certbot -d hl7int-server.com --non-interactive --agree-tos -m your@email.com
 ```
 
 ### 3. Copy nginx config
 
 ```bash
-sudo cp nginx/ahipdemo.conf /etc/nginx/conf.d/
+sudo cp nginx/hl7int-server.conf /etc/nginx/conf.d/
 ```
 
 ### 4. Test and reload nginx
@@ -64,14 +64,14 @@ sudo systemctl status certbot-renew.timer
 
 ## Adjust ports
 
-If your `.env` uses different ports, edit `ahipdemo.conf`:
+If your `.env` uses different ports, edit `hl7int-server.conf`:
 
 - `8023` → HAPI (FHIR_PORT)
 - `8000` → MCP (MCP_PORT)
 
 ## Different domain
 
-Replace `ahipdemo.net` with your domain in:
+Replace `hl7int-server.com` with your domain in:
 
-1. `ahipdemo.conf` – `server_name` and `ssl_certificate` paths
+1. `hl7int-server.conf` – `server_name` and `ssl_certificate` paths
 2. certbot command – `-d yourdomain.com`
