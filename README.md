@@ -14,6 +14,7 @@ A Docker-based FHIR HAPI server with PostgreSQL backend, preloaded with [US Core
 - **AWS-ready** – Docker Compose setup suitable for EC2, ECS, or EKS
 - **Port 8023** – Configurable via `FHIR_PORT` (default 8023)
 - **Terminology modes** – Remote (tx.fhir.org) or local (no external dependency)
+- **MCP (Model Context Protocol)** – Optional [FHIR MCP Server](https://github.com/wso2/fhir-mcp-server) for AI/LLM integration (VS Code, Claude Desktop, MCP Inspector)
 
 ## Quick Start
 
@@ -42,6 +43,7 @@ docker compose logs -f hapi-fhir
 - **CapabilityStatement**: http://localhost:8023/fhir/metadata
 - **Swagger UI**: http://localhost:8023/fhir/swagger-ui/
 - **HAPI Tester**: http://localhost:8023/
+- **MCP Server** (if enabled): http://localhost:8000/mcp
 
 Example:
 
@@ -57,6 +59,7 @@ curl http://localhost:8023/fhir/metadata
 |---------------------------|----------------------------------------|--------------------------------------------------|
 | `POSTGRES_PASSWORD`       | `admin`                                | PostgreSQL password                              |
 | `FHIR_PORT`               | `8023`                                 | Host port for FHIR server                        |
+| `MCP_PORT`                | `8000`                                 | Host port for FHIR MCP server (AI/LLM tools)     |
 | `SPRING_CONFIG_ADDITIONAL_LOCATION` | `file:///config/application.yaml` | Config file (remote tx vs local terminology)     |
 
 **Terminology mode** – choose remote (tx.fhir.org) or local:
@@ -132,6 +135,55 @@ Use the same images as above. Deploy HAPI and PostgreSQL with Kubernetes manifes
 - Enable HTTPS (reverse proxy or ALB with SSL).
 - Restrict CORS `allowed_origin` in `config/application.yaml`.
 - Consider network segmentation and security groups.
+
+## MCP (Model Context Protocol)
+
+The [WSO2 FHIR MCP Server](https://github.com/wso2/fhir-mcp-server) is included and runs alongside HAPI. It exposes FHIR resources as MCP tools for AI assistants (Claude Desktop, VS Code, Cursor, MCP Inspector).
+
+### Endpoints
+
+- **MCP Streamable HTTP**: http://localhost:8000/mcp
+- **MCP SSE**: http://localhost:8000/sse
+
+### Connect from Cursor / VS Code
+
+Add to your MCP config (e.g. `.cursor/mcp.json` or VS Code MCP settings):
+
+```json
+{
+  "mcpServers": {
+    "fhir-uscore": {
+      "url": "http://localhost:8000/mcp"
+    }
+  }
+}
+```
+
+For remote deployment (e.g. ahipdemo.net), use your server URL:
+
+```json
+{
+  "mcpServers": {
+    "fhir-uscore": {
+      "url": "https://ahipdemo.net/mcp/mcp"
+    }
+  }
+}
+```
+
+*(Ensure nginx or your reverse proxy forwards `/mcp` to the MCP server on port 8000.)*
+
+### MCP Tools
+
+The server provides FHIR tools: `get_capabilities`, `search`, `read`, `create`, `update`, `delete`, and `get_user`. See [fhir-mcp-server documentation](https://github.com/wso2/fhir-mcp-server#tools) for details.
+
+### Disable MCP
+
+To run without the MCP server, use a profile or comment out the `fhir-mcp-server` service in `docker-compose.yml`, or scale it down:
+
+```bash
+docker compose up -d --scale fhir-mcp-server=0
+```
 
 ## Terminology
 

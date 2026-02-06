@@ -1,4 +1,4 @@
-# HAPI FHIR JPA Server with PostgreSQL
+# HAPI FHIR JPA Server with PostgreSQL + FHIR MCP Server
 # US Core 8.0.1 + LOINC, SNOMED, UCUM terminology
 # Ready for AWS deployment
 #
@@ -6,6 +6,9 @@
 #   remote (default): Uses tx.fhir.org - no local LOINC/SNOMED needed
 #   local: Uses locally loaded terminology - run load-terminology.sh first
 # Set via: SPRING_CONFIG_ADDITIONAL_LOCATION in .env
+#
+# MCP (Model Context Protocol): Optional FHIR MCP server for AI/LLM integration
+# (VS Code, Claude Desktop, MCP Inspector). Exposed on port 8000.
 
 services:
   hapi-fhir:
@@ -44,6 +47,23 @@ services:
       retries: 5
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  fhir-mcp-server:
+    image: wso2/fhir-mcp-server:latest
+    container_name: fhir-mcp-server
+    restart: unless-stopped
+    environment:
+      FHIR_SERVER_BASE_URL: http://hapi-fhir:8080/fhir
+      FHIR_MCP_HOST: 0.0.0.0
+      FHIR_MCP_PORT: "8000"
+      FHIR_MCP_REQUEST_TIMEOUT: "30"
+      # Disable OAuth for local HAPI (no auth required)
+      FHIR_SERVER_DISABLE_AUTHORIZATION: "true"
+    ports:
+      - "${MCP_PORT:-8000}:8000"
+    depends_on:
+      hapi-fhir:
+        condition: service_started
 
 volumes:
   postgres_data:
