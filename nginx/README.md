@@ -29,7 +29,7 @@ sudo mkdir -p /var/www/certbot
 
 # Option A: Use certbot standalone (stop nginx first)
 sudo systemctl stop nginx
-sudo certbot certonly --standalone -d hl7int-server.com --non-interactive --agree-tos -m your@email.com
+sudo certbot certonly --standalone -d hl7int-server.com --non-interactive --agree-tos -m kaminker.diego@gmail.com
 sudo systemctl start nginx
 ```
 
@@ -66,7 +66,7 @@ sudo systemctl status certbot-renew.timer
 
 If your `.env` uses different ports, edit `hl7int-server.conf`:
 
-- `8023` → HAPI (FHIR_PORT)
+- `8080` → HAPI (FHIR_PORT)
 - `8000` → MCP (MCP_PORT)
 
 ## Different domain
