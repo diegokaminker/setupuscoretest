@@ -1,0 +1,25 @@
+{
+    "telecom": [
+      {
+        "value": "+15555555555",
+        "system": "phone",
+        "use": "home"
+      }
+    ],
+    "resourceType": "Patient",
+    "birthDate": "1968-07-23",
+    "name": [
+      {
+        "family": "Patient T03 fam",
+        "given": [
+          "Patient T03 giv"
+        ]
+      }
+    ],
+    "identifier": [
+      {
+        "value": "L01_1_T03",
+        "system": "http://fhirintermediate.org/patient_id"
+      }
+    ]
+  }

@@ -1,0 +1,211 @@
+21:56:38,167 |-INFO in ch.qos.logback.classic.LoggerContext[default] - This is logback-classic version 1.5.16
+21:56:38,251 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - Here is a list of configurators discovered as a service, by rank: 
+21:56:38,251 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb -   org.springframework.boot.logging.logback.RootLogLevelConfigurator
+21:56:38,251 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - They will be invoked in order until ExecutionStatus.DO_NOT_INVOKE_NEXT_IF_ANY is returned.
+21:56:38,251 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - Constructed configurator of type class org.springframework.boot.logging.logback.RootLogLevelConfigurator
+21:56:38,810 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - org.springframework.boot.logging.logback.RootLogLevelConfigurator.configure() call lasted 2 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+21:56:38,811 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - Trying to configure with ch.qos.logback.classic.joran.SerializedModelConfigurator
+21:56:39,055 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - Constructed configurator of type class ch.qos.logback.classic.joran.SerializedModelConfigurator
+21:56:39,058 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.scmo]
+21:56:39,060 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.scmo]
+21:56:39,060 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - ch.qos.logback.classic.joran.SerializedModelConfigurator.configure() call lasted 5 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+21:56:39,060 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - Trying to configure with ch.qos.logback.classic.util.DefaultJoranConfigurator
+21:56:39,118 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - Constructed configurator of type class ch.qos.logback.classic.util.DefaultJoranConfigurator
+21:56:39,120 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+21:56:39,130 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [jar:file:/app/main.war!/WEB-INF/classes!/logback.xml]
+21:56:39,603 |-INFO in ConfigurationWatchList(mainURL=jar:file:/app/main.war!/WEB-INF/classes!/logback.xml, fileWatchList={}, urlWatchList=[}) - URL [jar:file:/app/main.war!/WEB-INF/classes!/logback.xml] is not of type file
+21:56:44,725 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@6e1ec318 - Adding [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+21:56:44,725 |-INFO in ConfigurationWatchList(mainURL=jar:file:/app/main.war!/WEB-INF/classes!/logback.xml, fileWatchList={}, urlWatchList=[}) - Cannot watch [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] as its protocol is not one of file, http or https.
+21:56:44,817 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word applicationName with class [org.springframework.boot.logging.logback.ApplicationNameConverter]
+21:56:44,818 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+21:56:44,818 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+21:56:44,818 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+21:56:44,818 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+21:56:44,961 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr( ){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+21:56:44,961 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+21:56:44,961 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD:-TRACE}"
+21:56:44,962 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p   --- %applicationName[%t] %-40.40logger{39} : %m%n%wEx" substituted for "${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- %applicationName[%t] ${LOG_CORRELATION_PATTERN:-}%-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+21:56:44,962 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "UTF-8" substituted for "${FILE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+21:56:44,962 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "TRACE" substituted for "${FILE_LOG_THRESHOLD:-TRACE}"
+21:56:44,966 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@6e1ec318 - Adding [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/console-appender.xml] to configuration watch list.
+21:56:44,966 |-INFO in ConfigurationWatchList(mainURL=jar:file:/app/main.war!/WEB-INF/classes!/logback.xml, fileWatchList={}, urlWatchList=[}) - Cannot watch [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/console-appender.xml] as its protocol is not one of file, http or https.
+21:56:45,121 |-WARN in ch.qos.logback.classic.model.processor.ConfigurationModelHandlerFull - Missing watchable .xml or .properties files.
+21:56:45,121 |-WARN in ch.qos.logback.classic.model.processor.ConfigurationModelHandlerFull - Watching .xml files requires that the main configuration file is reachable as a URL
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+21:56:45,125 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+21:56:45,125 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+21:56:45,126 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+21:56:45,524 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD}"
+21:56:45,526 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+21:56:45,526 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr( ){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN}"
+21:56:45,526 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7e0b0338 - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET}"
+21:56:46,898 |-INFO in ch.qos.logback.core.ConsoleAppender[CONSOLE] - BEWARE: Writing to the console can be very slow. Avoid logging to the 
+21:56:46,898 |-INFO in ch.qos.logback.core.ConsoleAppender[CONSOLE] - console in production environments, especially in high volume systems.
+21:56:46,898 |-INFO in ch.qos.logback.core.ConsoleAppender[CONSOLE] - See also https://logback.qos.ch/codes.html#slowConsole
+21:56:46,899 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+21:56:46,972 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+21:56:46,974 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.opencds.cqf.cql.engine.debug] to DEBUG
+21:56:46,975 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@617faa95 - End of configuration.
+21:56:47,206 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@1e127982 - Registering current configuration as safe fallback point
+21:56:47,206 |-INFO in ch.qos.logback.classic.util.ContextInitializer@148080bb - ch.qos.logback.classic.util.DefaultJoranConfigurator.configure() call lasted 8088 milliseconds. ExecutionStatus=DO_NOT_INVOKE_NEXT_IF_ANY
+
+21:57:02,317 |-INFO in ConfigurationWatchList(mainURL=jar:file:/app/main.war!/WEB-INF/classes!/logback.xml, fileWatchList={}, urlWatchList=[}) - URL [jar:file:/app/main.war!/WEB-INF/classes!/logback.xml] is not of type file
+21:57:02,335 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@6e1ec318 - Adding [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+21:57:02,335 |-INFO in ConfigurationWatchList(mainURL=jar:file:/app/main.war!/WEB-INF/classes!/logback.xml, fileWatchList={}, urlWatchList=[}) - Cannot watch [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] as its protocol is not one of file, http or https.
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word applicationName with class [org.springframework.boot.logging.logback.ApplicationNameConverter]
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr(1){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD:-TRACE}"
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p 1 --- %applicationName[%t] %-40.40logger{39} : %m%n%wEx" substituted for "${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- %applicationName[%t] ${LOG_CORRELATION_PATTERN:-}%-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "UTF-8" substituted for "${FILE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+21:57:02,641 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "TRACE" substituted for "${FILE_LOG_THRESHOLD:-TRACE}"
+21:57:02,642 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@6e1ec318 - Adding [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/console-appender.xml] to configuration watch list.
+21:57:02,642 |-INFO in ConfigurationWatchList(mainURL=jar:file:/app/main.war!/WEB-INF/classes!/logback.xml, fileWatchList={}, urlWatchList=[}) - Cannot watch [jar:file:/app/main.war!/WEB-INF/lib/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/console-appender.xml] as its protocol is not one of file, http or https.
+21:57:02,646 |-WARN in ch.qos.logback.classic.model.processor.ConfigurationModelHandlerFull - Missing watchable .xml or .properties files.
+21:57:02,646 |-WARN in ch.qos.logback.classic.model.processor.ConfigurationModelHandlerFull - Watching .xml files requires that the main configuration file is reachable as a URL
+21:57:02,646 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+21:57:02,646 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework
+21:57:02,647 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+21:57:02,647 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework
+21:57:02,647 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+21:57:02,647 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework
+21:57:02,647 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+21:57:02,647 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework
+21:57:02,648 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+21:57:02,648 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework
+21:57:02,648 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+21:57:02,648 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework
+21:57:02,648 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+21:57:02,648 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework
+21:57:02,648 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+21:57:02,648 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework
+21:57:02,648 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+21:57:02,648 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+21:57:02,648 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD}"
+21:57:02,649 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+21:57:02,649 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr(1){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN}"
+21:57:02,649 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@7c9d8e2 - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET}"
+21:57:02,972 |-INFO in ch.qos.logback.core.ConsoleAppender[CONSOLE] - BEWARE: Writing to the console can be very slow. Avoid logging to the 
+21:57:02,972 |-INFO in ch.qos.logback.core.ConsoleAppender[CONSOLE] - console in production environments, especially in high volume systems.
+21:57:02,972 |-INFO in ch.qos.logback.core.ConsoleAppender[CONSOLE] - See also https://logback.qos.ch/codes.html#slowConsole
+21:57:02,972 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+21:57:02,973 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating INFO level on Logger[ROOT] onto the JUL framework
+21:57:02,973 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+21:57:02,973 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.opencds.cqf.cql.engine.debug] to DEBUG
+21:57:02,973 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@20d525 - Propagating DEBUG level on Logger[org.opencds.cqf.cql.engine.debug] onto the JUL framework
+21:57:02,973 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@6200f9cb - End of configuration.
+21:57:02,973 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@2002fc1d - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-02-05T21:57:06.959Z  INFO 1 --- [           main] ca.uhn.fhir.jpa.starter.Application      : Starting Application using Java 17.0.14 with PID 1 (/app/main.war started by nonroot in /app)
+2026-02-05T21:57:06.963Z  INFO 1 --- [           main] ca.uhn.fhir.jpa.starter.Application      : No active profile set, falling back to 1 default profile: "default"
+2026-02-05T21:57:39.679Z  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-05T21:57:45.122Z  INFO 1 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5278 ms. Found 52 JPA repository interfaces.
+2026-02-05T21:58:20.800Z  WARN 1 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'ca.uhn.fhir.jpa.config.BeanPostProcessorConfig' of type [ca.uhn.fhir.jpa.config.BeanPostProcessorConfig$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [persistenceExceptionTranslationPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-02-05T21:58:29.601Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-02-05T21:58:29.690Z  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-02-05T21:58:29.691Z  INFO 1 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-02-05T21:58:32.418Z  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-02-05T21:58:32.483Z  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 84067 ms
+2026-02-05T21:58:34.559Z  INFO 1 --- [           main] ca.uhn.fhir.util.VersionUtil             : HAPI FHIR version 8.0.0 - Rev 091beb6d18
+2026-02-05T21:58:34.572Z  INFO 1 --- [           main] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+2026-02-05T21:58:35.618Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to allow contains searches
+2026-02-05T21:58:35.618Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to deny multiple deletes
+2026-02-05T21:58:35.618Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to deny external references
+2026-02-05T21:58:35.618Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to enable DAO scheduling
+2026-02-05T21:58:35.619Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to disable delete expunges
+2026-02-05T21:58:35.619Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to enable expunges
+2026-02-05T21:58:35.619Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to allow overriding default search params
+2026-02-05T21:58:35.619Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to disable auto-creating placeholder references
+2026-02-05T21:58:35.619Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to auto-version references at paths []
+2026-02-05T21:58:35.620Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to enable value set pre-expansion
+2026-02-05T21:58:35.676Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to enable value set pre-expansion task
+2026-02-05T21:58:35.678Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured for pre-expand value set default count of 1000
+2026-02-05T21:58:35.678Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured for pre-expand value set max count of 1000
+2026-02-05T21:58:35.678Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured for maximum expansion size of 1000
+2026-02-05T21:58:36.878Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to have a maximum fetch size of 'unlimited'
+2026-02-05T21:58:36.879Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to cache search results for 60000 milliseconds
+2026-02-05T21:58:36.879Z  INFO 1 --- [           main] c.u.f.j.s.common.FhirServerConfigCommon  : Server configured to use 'ALPHANUMERIC' Client ID Strategy
+2026-02-05T21:58:39.850Z  INFO 1 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: HAPI_PU]
+2026-02-05T21:58:42.159Z  INFO 1 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-02-05T21:59:40.317Z  INFO 1 --- [           main] .f.j.l.FilteringSqlLoggerImplContributor : Adding service: SqlStatementFilteringLogger
+2026-02-05T21:59:42.080Z  INFO 1 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-02-05T21:59:44.813Z  INFO 1 --- [           main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2026-02-05T21:59:51.526Z  INFO 1 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-05T21:59:52.399Z  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-02-05T22:00:01.199Z  INFO 1 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@718fd7c1
+2026-02-05T22:00:01.209Z  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-02-05T22:00:04.000Z  INFO 1 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+        Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+        Database driver: undefined/unknown
+        Database version: 14.20
+        Autocommit mode: undefined/unknown
+        Isolation level: undefined/unknown
+        Minimum pool size: undefined/unknown
+        Maximum pool size: undefined/unknown
+2026-02-05T22:00:26.564Z  INFO 1 --- [           main] b.i.HibernateSearchPreIntegrationService : HSEARCH000034: Hibernate Search version 7.2.1.Final
+2026-02-05T22:00:28.805Z  INFO 1 --- [           main] o.h.e.c.i.m.AuditMetadataGenerator       : Adding properties for entity: ca.uhn.fhir.jpa.entity.MdmLink
+2026-02-05T22:01:02.812Z  INFO 1 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-05T22:01:08.328Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:08.330Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_blkex_job_id" of relation "hfj_blk_export_job" does not exist, skipping
+2026-02-05T22:01:08.403Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:08.404Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_blkim_job_id" of relation "hfj_blk_import_job" does not exist, skipping
+2026-02-05T22:01:08.489Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:08.490Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_reshisttag_tagid" of relation "hfj_history_tag" does not exist, skipping
+2026-02-05T22:01:08.644Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:08.645Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_idxcmpstruniq_string" of relation "hfj_idx_cmp_string_uniq" does not exist, skipping
+2026-02-05T22:01:08.652Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:08.653Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_part_name" of relation "hfj_partition" does not exist, skipping
+2026-02-05T22:01:09.045Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:09.046Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_restag_tagid" of relation "hfj_res_tag" does not exist, skipping
+2026-02-05T22:01:09.201Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:09.203Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_resver_id_ver" of relation "hfj_res_ver" does not exist, skipping
+2026-02-05T22:01:09.440Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:09.440Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_res_type_fhir_id" of relation "hfj_resource" does not exist, skipping
+2026-02-05T22:01:09.459Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:09.518Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_search_uuid" of relation "hfj_search" does not exist, skipping
+2026-02-05T22:01:09.534Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:09.535Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_searchres_order" of relation "hfj_search_result" does not exist, skipping
+2026-02-05T22:01:10.255Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.255Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_subsc_resid" of relation "hfj_subscription_stats" does not exist, skipping
+2026-02-05T22:01:10.482Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.483Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_empi_person_tgt" of relation "mpi_link" does not exist, skipping
+2026-02-05T22:01:10.490Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.490Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_pack_id" of relation "npm_package" does not exist, skipping
+2026-02-05T22:01:10.568Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.568Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_packver" of relation "npm_package_ver" does not exist, skipping
+2026-02-05T22:01:10.721Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.721Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_cs_codesystem" of relation "trm_codesystem" does not exist, skipping
+2026-02-05T22:01:10.803Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.803Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_codesystem_and_ver" of relation "trm_codesystem_ver" does not exist, skipping
+2026-02-05T22:01:10.888Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.888Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_concept_cs_code" of relation "trm_concept" does not exist, skipping
+2026-02-05T22:01:10.972Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:10.972Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_concept_map_url" of relation "trm_concept_map" does not exist, skipping
+2026-02-05T22:01:11.278Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:11.278Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_valueset_url" of relation "trm_valueset" does not exist, skipping
+2026-02-05T22:01:11.362Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:11.362Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_vs_concept_cscd" of relation "trm_valueset_concept" does not exist, skipping
+2026-02-05T22:01:11.438Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2026-02-05T22:01:11.440Z  WARN 1 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "idx_vs_concept_order" of relation "trm_valueset_concept" does not exist, skipping
+2026-02-05T22:01:13.605Z  INFO 1 --- [           main] irLocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'HAPI_PU'
+[ec2-user@ip-172-31-29-168 setupuscoretest]$ 

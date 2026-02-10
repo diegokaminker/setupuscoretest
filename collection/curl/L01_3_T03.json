@@ -1,0 +1,32 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirintermediate.org/patient_id",
+      "value": "L01_3_T03"
+    }
+  ],
+  "name": [
+    {
+      "family": "Patient L01_3_T03 fam",
+      "given": [
+        "Patient L01_3_T03 giv"
+      ]
+    }
+  ],
+  "birthDate": "1968-07-23",
+  "address": [
+    {
+      "line": [
+        "2000 NO PROVIDERS DRIVE"
+      ],
+      "city": "CITY_WITHOUT_PROVIDERS_INDEED",
+      "state": "NO PROVIDERS STATE",
+      "country": "NO PROVIDERS COUNTRY"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+  }
+}

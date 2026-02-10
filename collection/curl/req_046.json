@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirintermediate.org/patient_id",
+      "value": "L00_1_T02"
+    }
+  ],
+  "name": [
+    {
+      "family": "Patient L00_1_T02 fam",
+      "given": [
+        "Patient L00_1_T02 giv"
+      ]
+    }
+  ],
+  "birthDate": "1968-07-23",
+  "address": [
+    {
+      "line": [
+        "128 THIS PATIENT DRIVE",
+        "SUITE 318"
+      ],
+      "city": "Ann Arbor",
+      "state": "MI",
+      "postalCode": "48103",
+      "country": "US"
+    },
+    {
+      "line": [
+        "256 THIS PATIENT AVE",
+        "SUITE 320 - PENT HOUSE"
+      ],
+      "city": "MONROE",
+      "state": "MI",
+      "postalCode": "48161",
+      "country": "US"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+  }
+}

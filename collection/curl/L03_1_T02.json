@@ -1,0 +1,22 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirintermediate.org/patient_id",
+      "value": "L03_1_T02"
+    }
+  ],
+  "name": [
+    {
+      "family": "Patient 3-1-T02 fam",
+      "given": [
+        "Patient 3-1-T02 giv"
+      ]
+    }
+  ],
+  "birthDate": "1968-07-23",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+  }
+}

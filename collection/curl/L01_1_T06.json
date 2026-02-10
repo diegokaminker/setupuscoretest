@@ -1,0 +1,28 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirintermediate.org/patient_id",
+      "value": "L01_1_T06"
+    }
+  ],
+  "name": [
+    {
+      "family": "Patient T06 fam",
+      "given": [
+        "Patient T06 giv"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "url",
+      "value": "http://iamnotaphoneoremail.com"
+    }
+  ],
+  "birthDate": "1968-07-23",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+  }
+}

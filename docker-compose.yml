@@ -1,0 +1,86 @@
+# HAPI FHIR JPA Server with PostgreSQL + FHIR MCP Server
+# US Core 8.0.1 + LOINC, SNOMED, UCUM terminology
+# Ready for AWS deployment
+#
+# Terminology mode:
+#   remote (default): Uses tx.fhir.org - no local LOINC/SNOMED needed
+#   local: Uses locally loaded terminology - run load-terminology.sh first
+# Set via: SPRING_CONFIG_ADDITIONAL_LOCATION in .env
+#
+# MCP (Model Context Protocol): Optional FHIR MCP server for AI/LLM integration
+# (VS Code, Claude Desktop, MCP Inspector). Exposed on port 8000.
+
+services:
+  hapi-fhir:
+    build: .
+    container_name: hapi-fhir-uscore
+    restart: on-failure
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: hapi
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      # ADD our config (keeps HAPI defaults, overrides datasource/IG)
+      SPRING_CONFIG_ADDITIONAL_LOCATION: ${SPRING_CONFIG_ADDITIONAL_LOCATION:-file:///config/application.yaml}
+      # For multi-terminology + VSAC: point HAPI at the auth proxy (run vsac-proxy and set VSAC_UMLS_API_KEY)
+      VSAC_TERMINOLOGY_URL: ${VSAC_TERMINOLOGY_URL:-}
+    ports:
+      - "${FHIR_PORT:-8023}:8080"  # host:container (HAPI listens on 8080)
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: hapi-fhir-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: hapi
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"  # host:container (5433 avoids conflict with host's 5432)
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d hapi"]
+      interval: 10s
+      timeout: 5s
+      start_period: 10s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # VSAC auth proxy: adds UMLS API key to requests to cts.nlm.nih.gov (use with multi-terminology config)
+  vsac-proxy:
+    build: ./vsac-proxy
+    container_name: vsac-proxy
+    restart: unless-stopped
+    environment:
+      PORT: "8081"
+      VSAC_UMLS_API_KEY: ${VSAC_UMLS_API_KEY:-}
+      VSAC_BACKEND: "https://cts.nlm.nih.gov/fhir/"
+    ports:
+      - "${VSAC_PROXY_PORT:-8081}:8081"
+
+  fhir-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    image: fhir-mcp-server:local
+    container_name: fhir-mcp-server
+    restart: unless-stopped
+    environment:
+      FHIR_SERVER_BASE_URL: http://hapi-fhir:8080/fhir
+      FHIR_MCP_HOST: 0.0.0.0
+      FHIR_MCP_PORT: "8000"
+      FHIR_MCP_REQUEST_TIMEOUT: "30"
+      # Disable OAuth for local HAPI (no auth required)
+      FHIR_SERVER_DISABLE_AUTHORIZATION: "true"
+    ports:
+      - "${MCP_PORT:-8000}:8000"
+    depends_on:
+      hapi-fhir:
+        condition: service_started
+
+volumes:
+  postgres_data:

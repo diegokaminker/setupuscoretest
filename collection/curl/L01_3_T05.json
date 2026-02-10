@@ -1,0 +1,163 @@
+{
+  "resourceType": "Bundle",
+  "type": "batch",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8",
+      "resource": {
+        "resourceType": "Patient",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/patient_id",
+            "value": "L01_3_T05"
+          }
+        ],
+        "name": [
+          {
+            "family": "Patient L01_3_T05 fam",
+            "given": [
+              "Patient L01_3_T05 giv"
+            ]
+          }
+        ],
+        "birthDate": "1968-07-23",
+        "address": [
+          {
+            "line": [
+              "2000 ONE PROVIDER DRIVE"
+            ],
+            "city": "CITY_WITH_TWO_PROVIDERS",
+            "state": "MI",
+            "country": "US"
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient?identifier=http://fhirintermediate.org/patient_id|L01_3_T05"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee7",
+      "resource": {
+        "resourceType": "Practitioner",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Family Name: Gaynor Given Name:\n                        Gloria Phone#: +402-772-7777 Identifiers: OHAPRID: 429 / NPI: 1234567890\n                        Gender: Female Birth Date: 02/13/1958</div>"
+        },
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/provider_id",
+            "value": "L01_3_T05_1"
+          }
+        ],
+        "name": [
+          {
+            "family": "OnePhysician",
+            "given": [
+              "First"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+402-772-7777"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "2000 ONE PROVIDER DRIVE"
+            ],
+            "city": "CITY_WITH_TWO_PROVIDERS",
+            "state": "MI",
+            "country": "US"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1958-02-13",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://qualifications.org",
+                  "code": "OBG",
+                  "display": "OB/GYN"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner?identifier=http://fhirintermediate.org/provider_id|L01_3_T05_1"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee9",
+      "resource": {
+        "resourceType": "Practitioner",
+       "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Two Physician</div>"
+        },
+         "identifier": [
+          {
+            "system": "http://fhirintermediate.org/provider_id",
+            "value": "L01_3_T05_2"
+          }
+        ],
+        "name": [
+          {
+            "family": "TwoPhysician",
+            "given": [
+              "Second"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+403-772-7777"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "3000 TWO PROVIDER DRIVE"
+            ],
+            "city": "CITY_WITH_TWO_PROVIDERS",
+            "state": "MI",
+            "country": "US"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1959-02-13",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://qualifications.org",
+                  "code": "FAM",
+                  "display": "FAMILY MEDICINE"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner?identifier=http://fhirintermediate.org/provider_id|L01_3_T05_2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8",
+      "resource": {
+        "resourceType": "Patient",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/patient_id",
+            "value": "L03_1_T04"
+          }
+        ],
+        "name": [
+          {
+            "family": "Patient L03_1_T04 fam",
+            "given": [
+              "Patient L03_1_T04 giv"
+            ]
+          }
+        ],
+        "birthDate": "1968-07-23",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient?identifier=http://fhirintermediate.org/patient_id|L03_1_T04"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee7",
+      "resource": {
+        "resourceType": "Immunization",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/immunization_id",
+            "value": "L03_1_T04-1"
+          }
+        ],
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "207",
+              "display": "COVID-19, mRNA, LNP-S, PF, 100 mcg/0.5mL dose or 50 mcg/0.25mL dose"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8"
+        },
+        "occurrenceDateTime": "2020-01-10",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Immunization?identifier=http://fhirintermediate.org/immunization_id|L03_1_T04-1"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee6",
+      "resource": {
+        "resourceType": "Immunization",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/immunization_id",
+            "value": "L03_1_T04-2"
+          }
+        ],
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "173",
+              "display": "cholera, BivWC"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8"
+        },
+        "occurrenceDateTime": "2019-10-20",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Immunization?identifier=http://fhirintermediate.org/immunization_id|L03_1_T04-2"
+      }
+    }
+  ]
+}

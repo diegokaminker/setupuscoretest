@@ -1,0 +1,29 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirintermediate.org/patient_id",
+      "value": "L01_1_T04"
+    }
+  ],
+  "name": [
+    {
+      "family": "Patient T04 fam",
+      "given": [
+        "Patient T04 giv"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "email",
+      "value": "mymail@patientt04.com",
+      "use": "home"
+    }
+  ],
+  "birthDate": "1968-07-23",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+  }
+}

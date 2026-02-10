@@ -1,0 +1,180 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8",
+      "resource": {
+        "resourceType": "Patient",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/patient_id",
+            "value": "L00_1_T04"
+          }
+        ],
+        "name": [
+          {
+            "family": "Patient L00_1_T04 fam",
+            "given": [
+              "Patient L00_1_T04 giv"
+            ]
+          }
+        ],
+        "birthDate": "1968-07-23",
+        "gender": "male",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient?identifier=http://fhirintermediate.org/patient_id|L00_1_T04"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee7",
+      "resource": {
+        "resourceType": "Condition",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/condition_id",
+            "value": "L00_1_T04"
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Redacted</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ],
+            "text": "Problem"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "442311008",
+              "display": "Liveborn born in hospital"
+            }
+          ],
+          "text": "Single liveborn, born in hospital"
+        },
+        "subject": {
+          "reference": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8",
+          "display": "Patient L00_1_T04 fam Patient L00_1_T04 giv"
+        },
+        "onsetDateTime": "2020-08-10"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition?identifier=http://fhirintermediate.org/condition_id|L00_1_T04"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee9",
+      "resource": {
+        "resourceType": "Condition",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/condition_id",
+            "value": "L00_1_T04b"
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Redacted</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ],
+            "text": "Problem"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "69347004",
+              "display": "Neonatal jaundice due to delayed conjugation from delayed development of conjugating system"
+            }
+          ],
+          "text": "Neonatal jaundice due to delayed conjugation from delayed development of conjugating system"
+        },
+        "subject": {
+          "reference": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8",
+          "display": "Patient L00_1_T04 fam Patient L00_1_T04 giv"
+        },
+        "onsetDateTime": "2020-08-10"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition?identifier=http://fhirintermediate.org/condition_id|L00_1_T04b"
+      }
+    }
+  ]
+}

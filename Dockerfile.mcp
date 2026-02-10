@@ -1,0 +1,12 @@
+# FHIR MCP Server - build for amd64 (WSO2 image is arm64-only on Docker Hub)
+# Uses PyPI package: https://github.com/wso2/fhir-mcp-server
+FROM python:3.12-slim
+
+RUN pip install --no-cache-dir fhir-mcp-server
+
+ENV FHIR_MCP_HOST=0.0.0.0
+ENV FHIR_MCP_PORT=8000
+
+EXPOSE 8000
+
+CMD ["fhir-mcp-server", "--transport", "streamable-http", "--log-level", "INFO"]

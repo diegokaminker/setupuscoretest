@@ -1,0 +1,5 @@
+# For postman_to_curl.py (XML->JSON conversion)
+xmltodict>=0.13.0
+
+# Optional: fhir.resources[xml] for spec-compliant XML<->JSON (requires Python 3.10+)
+# pip install "fhir.resources[xml]"

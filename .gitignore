@@ -1,0 +1,8 @@
+# Local-only (do not commit)
+myservercommand.md
+
+# Terminology data (large files, manual download)
+terminology-data/
+
+# Config backups
+config/*.bak.*

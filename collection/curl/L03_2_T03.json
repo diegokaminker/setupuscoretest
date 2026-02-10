@@ -1,0 +1,134 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8",
+      "resource": {
+        "resourceType": "Patient",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/patient_id",
+            "value": "L03_2_T03"
+          }
+        ],
+        "name": [
+          {
+            "family": "Patient L03_2_T03 fam",
+            "given": [
+              "Patient L03_2_T03 giv"
+            ]
+          }
+        ],
+        "birthDate": "1968-07-23",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient?identifier=http://fhirintermediate.org/patient_id|L03_2_T03"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee5",
+      "resource": {
+        "resourceType": "Practitioner",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">John Requester</div>"
+        },
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/provider_id",
+            "value": "L03_2_T03"
+          }
+        ],
+        "name": [
+          {
+            "family": "Requester",
+            "given": [
+              "John"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+402-772-7777"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "2000 ONE REQUESTER DR"
+            ],
+            "city": "Requester Town",
+            "state": "MI",
+            "country": "US"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1968-02-13",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "CNP",
+                  "display": "Certified Nurse Practitioner"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner?identifier=http://fhirintermediate.org/provider_id|L03_2_T03"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee7",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "identifier": [
+          {
+            "system": "http://fhirintermediate.org/medication_request_id",
+            "value": "L03_2_T03"
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Empty for brevity</div>"
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "582620",
+              "display": "Nizatidine 15 MG/ML Oral Solution [Axid]"
+            }
+          ],
+          "text": "Nizatidine 15 MG/ML Oral Solution [Axid]"
+        },
+        "subject": {
+          "reference": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee8"
+        },
+        "authoredOn": "2021-01-05",
+        "requester": {
+          "reference": "urn:uuid:ef13935c-f604-497c-bcbc-0e3e0ff01ee5",
+          "display": "John Requester, MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationRequest?identifier=http://fhirintermediate.org/medication_request_id|L03_2_T03"
+      }
+    }
+  ]
+}

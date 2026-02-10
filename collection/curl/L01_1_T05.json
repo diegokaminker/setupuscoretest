@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "identifier": [
+    {
+      "system": "http://fhirintermediate.org/patient_id",
+      "value": "L01_1_T05"
+    }
+  ],
+  "name": [
+    {
+      "family": "Patient T05 fam",
+      "given": [
+        "Patient T05 giv"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "email",
+      "value": "mymail@patientt05job.com",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "mymail@patientt05.com",
+      "use": "home"
+    },
+    {
+      "system": "phone",
+      "value": "+15555555555",
+      "use": "work"
+    },
+    {
+      "system": "phone",
+      "value": "+16666666666",
+      "use": "home"
+    }
+  ],
+  "birthDate": "1968-07-23",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative</div>"
+  }
+}
