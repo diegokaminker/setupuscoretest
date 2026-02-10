@@ -130,10 +130,11 @@ if [[ "$SKIP_LOINC" != "true" ]]; then
       LOINC_ARGS="$LOINC_ARGS -d /terminology/$(basename "$HIERARCHY")"
     fi
 
+    # Image CMD is ["/app/app.jar", "help"]; we must pass the JAR then the subcommand (otherwise "upload-terminology" is taken as the jarfile)
     if docker run --rm --network host \
       -v "$TERMINOLOGY_DATA_DIR:/terminology:ro" \
       "$HAPI_CLI_IMAGE" \
-      upload-terminology -v r4 -t "$TARGET_URL" -u "http://loinc.org" \
+      /app/app.jar upload-terminology -v r4 -t "$TARGET_URL" -u "http://loinc.org" \
       $LOINC_ARGS; then
       log "LOINC upload completed."
     else
@@ -163,7 +164,7 @@ if [[ "$SKIP_SNOMED" != "true" ]]; then
     if docker run --rm --network host \
       -v "$TERMINOLOGY_DATA_DIR:/terminology:ro" \
       "$HAPI_CLI_IMAGE" \
-      upload-terminology -v r4 -t "$TARGET_URL" -u "http://snomed.info/sct" \
+      /app/app.jar upload-terminology -v r4 -t "$TARGET_URL" -u "http://snomed.info/sct" \
       -d "/terminology/$(basename "$SNOMED_FILE")"; then
       log "SNOMED CT upload completed."
     else

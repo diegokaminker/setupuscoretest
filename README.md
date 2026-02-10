@@ -88,6 +88,26 @@ FHIR_PORT=8023
 
 Copy `.env.example` to `.env` and edit as needed.
 
+**No remote terminology (local only):** To avoid any calls to tx.fhir.org or VSAC, use `application-local-terminology.yaml` (it now sets `remote_terminology_service: {}` so the image’s default remote config is overridden). If you edit `application.yaml` and just delete the `remote_terminology_service` block, the server can still use remote terminology from the base image config (Spring merges configs). You must either use the local config or set `remote_terminology_service: {}` explicitly in your YAML.
+
+**Instance: use only application.yaml** – On the server/instance, use the default config (multi-terminology) and no override:
+
+- In `.env`, **do not set** `SPRING_CONFIG_ADDITIONAL_LOCATION`, so the default `file:///config/application.yaml` is used; or set it explicitly:
+  ```bash
+  SPRING_CONFIG_ADDITIONAL_LOCATION=file:///config/application.yaml
+  ```
+- Restart: `docker compose up -d` (or `docker compose restart hapi-fhir`).
+- Confirm: `./scripts/verify-config.sh` or `docker exec hapi-fhir-uscore env | grep SPRING_CONFIG`.
+
+**Start HAPI from scratch** (wipe DB and restart with current config):
+```bash
+# Optional: set config first (e.g. local-only, no remote)
+export SPRING_CONFIG_ADDITIONAL_LOCATION=file:///config/application-local-terminology.yaml
+
+./scripts/start-from-scratch.sh
+```
+Or manually: `docker compose down -v` then `docker compose up -d`. This removes the Postgres volume so all server data (resources, loaded terminology, IG cache) is lost. After a scratch start with local terminology, run `./scripts/load-terminology.sh` again to reload LOINC/SNOMED.
+
 ### Application Config
 
 Edit `config/application.yaml` (default: multi-terminology), `config/application_default.yaml` (single remote tx), or `config/application-local-terminology.yaml` (local) to change:
@@ -96,6 +116,8 @@ Edit `config/application.yaml` (default: multi-terminology), `config/application
 - US Core IG version or add other IGs
 - Remote terminology server URL
 - Value set pre-expansion settings
+
+**HAPI server version:** The image is pinned to **v7.6.0** in the Dockerfile (`ARG HAPI_IMAGE_TAG=v7.6.0`). To use a different tag (e.g. `latest` or `v8.4.0-2`): `docker compose build --build-arg HAPI_IMAGE_TAG=latest` then `docker compose up -d`. See [hapiproject/hapi tags](https://hub.docker.com/r/hapiproject/hapi/tags).
 
 ## AWS Deployment
 

@@ -10,7 +10,10 @@
 
 services:
   hapi-fhir:
-    build: .
+    build:
+      context: .
+      args:
+        HAPI_IMAGE_TAG: ${HAPI_IMAGE_TAG:-v7.6.0}
     container_name: hapi-fhir-uscore
     restart: on-failure
     environment:
