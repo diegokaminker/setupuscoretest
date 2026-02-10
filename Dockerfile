@@ -3,10 +3,10 @@
 
 FROM hapiproject/hapi:latest
 
-# Copy configs: remote tx (default), local terminology, multi-terminology (tx + US Core + VSAC)
+# Copy configs: application.yaml = multi-terminology (default); application_default.yaml = single remote tx
 COPY config/application.yaml /config/application.yaml
+COPY config/application_default.yaml /config/application_default.yaml
 COPY config/application-local-terminology.yaml /config/application-local-terminology.yaml
-COPY config/application-multi-terminology.yaml /config/application-multi-terminology.yaml
 
 # ADD our config (overrides datasource/IG; keeps HAPI bean defaults)
 ENV SPRING_CONFIG_ADDITIONAL_LOCATION=file:///config/application.yaml

@@ -6,9 +6,8 @@ Forwards FHIR terminology requests to [NLM VSAC](https://cts.nlm.nih.gov/fhir/) 
 
 1. **Get a UMLS API key** from [UTS Profile](https://uts.nlm.nih.gov/uts/profile) (free, requires UMLS license).
 
-2. **Start the stack** with multi-terminology config and the proxy:
+2. **Start the stack** (default config is multi-terminology) with the proxy:
    ```bash
-   export SPRING_CONFIG_ADDITIONAL_LOCATION=file:///config/application-multi-terminology.yaml
    export VSAC_TERMINOLOGY_URL=http://vsac-proxy:8081/
    export VSAC_UMLS_API_KEY=your-umls-api-key
    docker compose up -d
@@ -80,9 +79,8 @@ PROXY_URL=http://localhost:8081 VSAC_UMLS_API_KEY=your-key ./vsac-proxy/test-pro
 With the proxy passing the script above:
 
 ```bash
-export SPRING_CONFIG_ADDITIONAL_LOCATION=file:///config/application-multi-terminology.yaml
 export VSAC_TERMINOLOGY_URL=http://vsac-proxy:8081/
 export VSAC_UMLS_API_KEY=your-umls-api-key
 docker compose up -d
-# Then trigger a VSAC value set operation from HAPI (e.g. validate-code or $expand on a VSAC value set).
+# Default application.yaml is multi-terminology. Then trigger a VSAC value set operation from HAPI (e.g. validate-code or $expand on a VSAC value set).
 ```

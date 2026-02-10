@@ -1,5 +1,6 @@
-# HAPI FHIR JPA Server - US Core 8.0.1 Configuration
-# REMOTE TERMINOLOGY - Uses tx.fhir.org for LOINC and SNOMED (default)
+# HAPI FHIR JPA Server - US Core 8.0.1 Configuration (default)
+# MULTI-TERMINOLOGY: tx (LOINC/SNOMED) + local US Core/HL7 + VSAC FHIR Server
+# Loaded by default via SPRING_CONFIG_ADDITIONAL_LOCATION=file:///config/application.yaml
 
 server:
   port: 8080
@@ -40,16 +41,26 @@ management:
       probes:
         enabled: true
 
+# VSAC / UMLS API key for cts.nlm.nih.gov (override with VSAC_UMLS_API_KEY env var)
+vsac:
+  api_key: ${VSAC_UMLS_API_KEY:}
+
+# Uncomment to see terminology activity in logs (docker-compose logs -f hapi-fhir)
+# Remote lookup/validate-code errors and troubleshooting go to this logger.
+# logging:
+#   level:
+#     ca.uhn.fhir.log.terminology_troubleshooting: DEBUG
+
 hapi:
   fhir:
     fhir_version: R4
     openapi_enabled: true
 
     # -------------------------------------------------------------------------
-    # US Core 8.0.1 Implementation Guide
-    # https://hl7.org/fhir/us/core/
+    # US Core 8.0.1 Implementation Guide + optional local VSAC
     # -------------------------------------------------------------------------
     install_transitive_ig_dependencies: true
+    ips_enabled: true
     implementationguides:
       uscore:
         name: hl7.fhir.us.core
@@ -61,15 +72,25 @@ hapi:
         version: 1.1.0
         reloadExisting: false
         installMode: STORE_AND_INSTALL
-
-    # International Patient Summary - enables Patient/$summary operation
-    ips_enabled: true
+      hl7terminology:
+        name: hl7.terminology.r4
+        version: "5.0.0"
+        reloadExisting: false
+        installMode: STORE_AND_INSTALL
+      # Optional: load VSAC value sets locally (no remote VSAC calls). Uncomment to enable.
+      # Package: https://www.fhir.org/packages/us.nlm.vsac/ (deprecated but still updated for US Core/CCDA).
+      # vsac:
+      #   packageUrl: https://www.fhir.org/packages/us.nlm.vsac/0.24.0/package.tgz
+      #   name: us.nlm.vsac
+      #   version: "0.24.0"
+      #   reloadExisting: false
+      #   installMode: STORE_AND_INSTALL
 
     # -------------------------------------------------------------------------
-    # Terminology: LOINC, SNOMED, UCUM, HL7
-    # US Core ValueSets reference these code systems. We use:
-    # 1. Remote tx.fhir.org for LOINC and SNOMED (full expansions)
-    # 2. hl7.terminology.r4 package loads UCUM, HL7 value sets
+    # Terminology: three sources
+    # 1. tx.fhir.org  → LOINC and SNOMED
+    # 2. Local/IG     → US Core value sets + UCUM, HL7 (from IG + hl7.terminology.r4)
+    # 3. VSAC         → VSAC value sets (cts.nlm.nih.gov); may require UMLS API key
     # -------------------------------------------------------------------------
     logical_urls:
       - "http://terminology.hl7.org/*"
@@ -82,12 +103,57 @@ hapi:
       - "https://loinc.org/*"
       - "http://hl7.org/fhir/us/core/*"
       - "https://hl7.org/fhir/us/core/*"
+      - "http://cts.nlm.nih.gov/fhir/*"
+      - "https://cts.nlm.nih.gov/fhir/*"
 
-    # Remote terminology server for LOINC and SNOMED
+    # Multiple remote terminology services (order can affect which server is tried first).
+    # There is no separate "enable" switch: remote terminology is ON when this block is present.
+    # HAPI routes by CODE SYSTEM. Only LOINC and SNOMED are sent to tx; all other systems
+    # used in US Core / VSAC value sets are sent to VSAC (set VSAC_TERMINOLOGY_URL to your proxy).
+    # System in requests may be URL (http://loinc.org) or URN (urn:oid:...); both are mapped for LOINC/SNOMED.
     remote_terminology_service:
-      all:
-        system: "*"
+      # tx.fhir.org — LOINC and SNOMED (by URL and by OID URN)
+      tx_loinc:
+        system: "http://loinc.org"
         url: "https://tx.fhir.org/r4/"
+      tx_loinc_oid:
+        system: "urn:oid:2.16.840.1.113883.6.1"
+        url: "https://tx.fhir.org/r4/"
+      tx_snomed:
+        system: "http://snomed.info"
+        url: "https://tx.fhir.org/r4/"
+      tx_snomed_oid:
+        system: "urn:oid:2.16.840.1.113883.6.96"
+        url: "https://tx.fhir.org/r4/"
+      # VSAC: value set URLs (ValueSet/$expand, resolve by url)
+      vsac:
+        system: "http://cts.nlm.nih.gov/fhir"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      # VSAC: code systems used in US Core / VSAC value sets (validate-code routes by code system)
+      vsac_cdcrec:
+        system: "urn:oid:2.16.840.1.113883.6.238"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_cpt:
+        system: "urn:oid:2.16.840.1.113883.3.221.5"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_hcpcs:
+        system: "urn:oid:2.16.840.1.113883.6.285"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_icd10cm:
+        system: "urn:oid:2.16.840.1.113883.6.90"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_icd10pcs:
+        system: "urn:oid:2.16.840.1.113883.6.103"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_nucc:
+        system: "urn:oid:2.16.840.1.113883.11.19465"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_rxnorm:
+        system: "urn:oid:2.16.840.1.113883.6.88"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
+      vsac_ndc:
+        system: "urn:oid:2.16.840.1.113883.6.69"
+        url: ${VSAC_TERMINOLOGY_URL:https://cts.nlm.nih.gov/fhir/}
 
     # Pre-expand value sets for better performance
     pre_expand_value_sets: true
@@ -95,20 +161,16 @@ hapi:
     pre_expand_value_sets_default_count: 1000
     maximum_expansion_size: 5000
 
-    # Validation
-    # responses_enabled: false - tx.fhir.org rejects IANA MIME codes (xml, json, etc.)
-    # in CapabilityStatement.format, causing metadata to return OperationOutcome instead
+    # Validation (disable response validation if tx/VSAC metadata causes issues)
     validation:
       requests_enabled: false
       responses_enabled: false
 
-    # CORS for web clients
     cors:
       allow_Credentials: true
       allowed_origin:
         - "*"
 
-    # Tester UI
     tester:
       home:
         name: US Core FHIR Server

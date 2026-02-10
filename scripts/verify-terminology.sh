@@ -58,6 +58,8 @@ echo ""
 echo "1. LOINC (tx.fhir.org)"
 LOINC_PARAM='{"resourceType":"Parameters","parameter":[{"name":"code","valueCode":"15074-8"},{"name":"system","valueUri":"http://loinc.org"}]}'
 check "validate-code 15074-8 (Glucose [Mass/volume])" POST "CodeSystem/\$validate-code" "$LOINC_PARAM" 'valueBoolean":\s*true'
+# CodeSystem $lookup (must be delegated to tx.fhir.org; use system=http://loinc.org)
+check "lookup 1963-8 (Bicarbonate)" GET "CodeSystem/\$lookup?system=http%3A%2F%2Floinc.org&code=1963-8" "" 'valueString":\s*"Bicarbonate'
 echo ""
 
 # 2. SNOMED (tx.fhir.org)

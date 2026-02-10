@@ -2,10 +2,8 @@
 # US Core 8.0.1 + LOINC, SNOMED, UCUM terminology
 # Ready for AWS deployment
 #
-# Terminology mode:
-#   remote (default): Uses tx.fhir.org - no local LOINC/SNOMED needed
-#   local: Uses locally loaded terminology - run load-terminology.sh first
-# Set via: SPRING_CONFIG_ADDITIONAL_LOCATION in .env
+# Config: default application.yaml = multi-terminology (tx + VSAC). Override via SPRING_CONFIG_ADDITIONAL_LOCATION
+# (e.g. application_default.yaml for single remote tx, application-local-terminology.yaml for local only).
 #
 # MCP (Model Context Protocol): Optional FHIR MCP server for AI/LLM integration
 # (VS Code, Claude Desktop, MCP Inspector). Exposed on port 8000.
@@ -21,7 +19,7 @@ services:
       POSTGRES_DB: hapi
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
-      # ADD our config (keeps HAPI defaults, overrides datasource/IG)
+      # Default: application.yaml (multi-terminology). Override for single-remote or local-only.
       SPRING_CONFIG_ADDITIONAL_LOCATION: ${SPRING_CONFIG_ADDITIONAL_LOCATION:-file:///config/application.yaml}
       # For multi-terminology + VSAC: point HAPI at the auth proxy (run vsac-proxy and set VSAC_UMLS_API_KEY)
       VSAC_TERMINOLOGY_URL: ${VSAC_TERMINOLOGY_URL:-}
